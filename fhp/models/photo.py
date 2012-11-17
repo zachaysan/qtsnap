@@ -91,6 +91,9 @@ class photo(magic_object):
         else:
             self.status_name = 'unknown'
             
+    def image_url_size(self, size):
+        base = self.image_url.split("?")[0][:-5]
+        return "".join([base, str(size), ".jpg"])
 
     def __getattr__(self, name):
         if name == 'user':

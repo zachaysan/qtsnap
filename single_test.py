@@ -1,9 +1,10 @@
 import unittest
 from tests.test_user import Test_retrieve_user
+from tests.test_photo_stream import Test_photo_stream
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(Test_retrieve_user('test_oauth_with_oauth'))
+    suite.addTest(Test_photo_stream('test_photo_is_actually_popular'))
     return suite
 
 
