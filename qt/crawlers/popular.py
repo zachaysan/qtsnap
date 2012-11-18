@@ -10,5 +10,5 @@ for photo in p:
     if i > MAX:
         break
     url = photo.image_url_size(100)
-    process_call = "wget --output-document=%s.jpg %s" % (photo.id, url)
+    process_call = "wget --output-document=photos/%s.jpg %s" % (photo.id, url)
     subprocess.call(process_call, shell=True)
