@@ -11,6 +11,8 @@ config/authentication.json.preprod
 *~
 *.backup*
 
+photos/*.jpg
+
 # Ignore python compiled files and generated directories.
 *.pyc
 build/
