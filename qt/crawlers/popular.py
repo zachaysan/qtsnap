@@ -2,7 +2,7 @@ from fhp.models.photo_stream import PhotoStream
 import subprocess
 p = PhotoStream()
 
-MAX = 10
+MAX = (100 * 1000)
 i = 0
 
 for photo in p:
