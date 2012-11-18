@@ -5,9 +5,9 @@ from fhp.models.photo import photo
 with open("ids") as id_file:
     for line in id_file.readlines():
         try:
-            photo_id = int(line.chomp())
+            photo_id = int(line.rstrip())
         except:
-            print "skipping line"
+            print "skipping line:"
             continue
         if photo_id % 100 == 0:
             print photo_id
