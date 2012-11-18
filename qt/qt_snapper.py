@@ -35,9 +35,15 @@ def main():
             
             photo = get_edge_pixels(image)
             photos[photo_id] = photo
+            print "loaded fine"
         except Exception, e:
             print "skipping %s" % image_filename
             print e
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]      
+            print(exc_type, fname, exc_tb.tb_lineno)
+
+
     target_photo_id = 2891405
     tp = photos[target_photo_id]
     target_photo = numpy.array([tp[2],tp[3],tp[0],tp[1]], dtype=numpy.int16)
