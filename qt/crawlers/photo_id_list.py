@@ -17,7 +17,12 @@ with open("ids") as id_file:
             print i
         if os.path.isfile("photos/%s.jpg" % photo_id):
             continue
-        photo = Photo(photo_id)
+        try:
+            photo = Photo(photo_id)
+        except Exception, e:
+            print "skipping photo %s" % photo_id
+            print e
+
         url = photo.image_url_size(100)
         process_call = "wget --output-document=photos/%s.jpg %s" % (photo.id, url)
         subprocess.call(process_call, shell=True)
