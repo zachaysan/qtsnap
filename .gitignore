@@ -17,9 +17,5 @@ build/
 dist/
 fhp.egg-info/
 
-# Ignore bash helper
-run_current.sh
-
-
 # Ignore test photo
 fhp/tests/test_photo.jpg
