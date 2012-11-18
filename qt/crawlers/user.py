@@ -44,7 +44,7 @@ if __name__ == "__main__":
     while len(uc.usernames) > len(uc.finished_usernames):
         try:
             uc.crawl_users()
-        except e:
+        except Exception, e:
             print e
             pass
 
