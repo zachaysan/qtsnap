@@ -1,18 +1,23 @@
 import subprocess
 import os
-from fhp.models.photo import photo
+from fhp.models.photo import Photo
+
+i = 0
 
 with open("ids") as id_file:
     for line in id_file.readlines():
+        i += 1
         try:
             photo_id = int(line.rstrip())
         except:
             print "skipping line:"
             continue
-        if photo_id % 100 == 0:
+        if i % 10000 == 0:
             print photo_id
-        if os.path.isfile("photos/%s.jpg" % photo.id):
+            print i
+        if os.path.isfile("photos/%s.jpg" % photo_id):
             continue
+        photo = Photo(photo_id)
         url = photo.image_url_size(100)
         process_call = "wget --output-document=photos/%s.jpg %s" % (photo.id, url)
         subprocess.call(process_call, shell=True)
