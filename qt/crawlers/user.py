@@ -1,7 +1,7 @@
 from fhp.models.user import User
 import subprocess
 import os
-
+from random import random
 
 class UserCrawler(object):
     def __init__(self, username='zachaysan'):
@@ -40,8 +40,23 @@ class UserCrawler(object):
         subprocess.call(process_call, shell=True)
 
 if __name__ == "__main__":
-    uc = UserCrawler()
-    while len(uc.usernames) > len(uc.finished_usernames):
+    username = 'zachaysan'
+    if os.path.isfile("usernames"):
+        f = open("usernames")
+        for line in f.readlines():
+            username = line.chomp()
+            break
+        f.close()
+    uc = UserCrawler(username)
+    get_some = None
+    while True:
+        if random() > 0.98:
+            get_some = uc.usernames - uc.finished_usernames
+            f = open('usernames', 'w')
+            for username in get_some:
+                f.write((str(username) + '\n'))
+                break
+            f.close()
         try:
             uc.crawl_users()
         except Exception, e:
