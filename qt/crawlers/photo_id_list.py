@@ -22,7 +22,7 @@ with open("ids") as id_file:
         except Exception, e:
             print "skipping photo %s" % photo_id
             print e
-
+            continue
         url = photo.image_url_size(100)
         process_call = "wget --output-document=photos/%s.jpg %s" % (photo.id, url)
         subprocess.call(process_call, shell=True)
